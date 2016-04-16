@@ -32,6 +32,7 @@ public class PostOrderTraversal {
         }
     }
 
+    //TODO postOrderTraversal by loop
     public static void main(String[] args) {
         TreeNode<Integer> treeNode = TreeNode.<Integer>newInstance(4, 1);
         postOrderTraversal(treeNode);
