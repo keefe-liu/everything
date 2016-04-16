@@ -31,6 +31,10 @@ public class LinkedStack<V> {
     public LinkedStack() {
     }
 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
     public int size() {
         return listNode == null ? 0 : listNode.size();
     }
@@ -50,6 +54,18 @@ public class LinkedStack<V> {
     }
 
     public static void main(String[] args) {
-        
+        LinkedStack<Integer> stack = new LinkedStack();
+        for (int i = 0; i < 10; i++) {
+            stack.push(i);
+        }
+        for (int i = 0; i < 4; i++) {
+            System.out.println(stack.pop());
+        }
+        stack.push(111);
+        stack.push(222);
+        stack.push(333);
+        for (int i = 0; i < 4; i++) {
+            System.out.println(stack.pop());
+        }
     }
 }
