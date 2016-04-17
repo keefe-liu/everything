@@ -34,4 +34,14 @@ public class SearchFromTree {
         }
         return null;
     }
+
+    public static void main(String[] args) {
+        BinarySearchTree<Integer> binarySearchTree = new BinarySearchTree<>(7, null, null);
+        for (int i = 0; i < 14; i++) {
+            binarySearchTree.insert(i);
+        }
+        BinarySearchTree<Integer> findR = findRecursive(binarySearchTree, 11);
+        BinarySearchTree<Integer> findL = findByLoop(binarySearchTree, 2);
+        System.out.println();
+    }
 }

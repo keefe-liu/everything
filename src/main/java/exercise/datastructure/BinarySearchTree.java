@@ -1,5 +1,7 @@
 package exercise.datastructure;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * Created by tingfang.liu on 2016/4/16.
  */
@@ -10,6 +12,12 @@ public class BinarySearchTree<V extends Comparable> {
     private BinarySearchTree left;
 
     private BinarySearchTree right;
+
+    public BinarySearchTree(V v, BinarySearchTree left, BinarySearchTree right) {
+        this.v = v;
+        this.left = left;
+        this.right = right;
+    }
 
     public V getV() {
         return v;
@@ -37,5 +45,37 @@ public class BinarySearchTree<V extends Comparable> {
 
     public static <V extends Comparable> BinarySearchTree<V> newInstance() {
         return null;
+    }
+
+    public void insert(V v) {
+        insertNode(new BinarySearchTree<V>(v, null, null));
+    }
+
+    private void insertNode(BinarySearchTree<V> binarySearchTree) {
+        int cpt = v.compareTo(binarySearchTree.v);
+        if (cpt == 0) {
+            return;
+        } else if (cpt < 0) {
+            if (right == null) {
+                right = binarySearchTree;
+            } else {
+                right.insertNode(binarySearchTree);
+            }
+        } else {
+            if (left == null) {
+                left = binarySearchTree;
+            } else {
+                left.insertNode(binarySearchTree);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        BinarySearchTree<Integer> binarySearchTree = new BinarySearchTree<>(7, null, null);
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        for (int i = 14; i > 0; i--) {
+            binarySearchTree.insert(random.nextInt(50));
+        }
+        System.out.println();
     }
 }
