@@ -1,5 +1,7 @@
 package practice.datastructure;
 
+import java.util.Collection;
+
 /**
  * Created by tingfang.liu on 2016/4/17.
  */
@@ -13,6 +15,10 @@ public class MyHeap<V extends Comparable> {
     public MyHeap(int capacity, boolean isMax) {
         this.elements = new Object[capacity];
         this.isMax = isMax;
+    }
+
+    public MyHeap(Collection<V> vs) {
+        // TODO: 2016/4/17 create heap 与 delete 类似
     }
 
     /*通过isMax来控制是最大堆还是最小堆*/
@@ -82,6 +88,7 @@ public class MyHeap<V extends Comparable> {
     private int parent(int index) {
         return (index - 1) >> 1;
     }
+
 
     public static void main(String[] args) {
         MyHeap<Integer> heap = new MyHeap<>(25, false);
