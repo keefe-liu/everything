@@ -1,7 +1,5 @@
 package exercise.datastructure;
 
-import java.util.Objects;
-
 /**
  * Created by tingfang.liu on 2016/4/16.
  */
@@ -12,6 +10,8 @@ public class TreeNode<V> {
     private TreeNode<V> left;
 
     private TreeNode<V> right;
+
+    public TreeNode() {}
 
     public TreeNode(V v, TreeNode<V> left, TreeNode<V> right) {
         this.v = v;
@@ -44,7 +44,7 @@ public class TreeNode<V> {
     }
 
     /*rootNum（序号）从上到下，从左到右逐渐增大*/
-    public static TreeNode newInstance(int depth,int rootNum) {
+    public static TreeNode newInstance(int depth, int rootNum) {
         if (depth <= 0) {
             return null;
         }

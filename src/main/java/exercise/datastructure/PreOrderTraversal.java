@@ -1,5 +1,7 @@
 package exercise.datastructure;
 
+import exercise.datastructure.*;
+
 import static java.lang.System.out;
 
 /**
@@ -10,6 +12,14 @@ public class PreOrderTraversal {
     private TreeNode<Integer> treeNode;
 
     public static void preOrderTraversal(TreeNode<Integer> treeNode) {
+        if (treeNode != null) {
+            out.print(treeNode.getV() + " ");
+            preOrderTraversal(treeNode.getLeft());
+            preOrderTraversal(treeNode.getRight());
+        }
+    }
+
+    public static <V extends Comparable> void preOrderTraversal(BinarySearchTree<V> treeNode) {
         if (treeNode != null) {
             out.print(treeNode.getV() + " ");
             preOrderTraversal(treeNode.getLeft());

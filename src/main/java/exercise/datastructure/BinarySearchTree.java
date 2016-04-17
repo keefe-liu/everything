@@ -70,12 +70,31 @@ public class BinarySearchTree<V extends Comparable> {
         }
     }
 
+    public BinarySearchTree findMin() {
+        BinarySearchTree temp = this;
+        while (temp.left != null) {
+            temp = temp.left;
+        }
+
+        return temp;
+    }
+
+    public BinarySearchTree findMax() {
+        BinarySearchTree temp = this;
+        while (temp.right != null) {
+            temp = temp.right;
+        }
+        return temp;
+    }
+
     public static void main(String[] args) {
         BinarySearchTree<Integer> binarySearchTree = new BinarySearchTree<>(7, null, null);
         ThreadLocalRandom random = ThreadLocalRandom.current();
         for (int i = 14; i > 0; i--) {
             binarySearchTree.insert(random.nextInt(50));
         }
+        InOrderTraversal.inOrderTraversal(binarySearchTree);
+        BinarySearchTree temp = binarySearchTree.findMin();
         System.out.println();
     }
 }

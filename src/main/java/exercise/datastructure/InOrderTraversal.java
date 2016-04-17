@@ -15,6 +15,14 @@ public class InOrderTraversal {
         }
     }
 
+    public static <V extends Comparable> void inOrderTraversal(BinarySearchTree<V> treeNode) {
+        if (treeNode != null) {
+            inOrderTraversal(treeNode.getLeft());
+            out.print(treeNode.getV() + " ");
+            inOrderTraversal(treeNode.getRight());
+        }
+    }
+
     public static void nonRecursionInOrder(TreeNode<Integer> treeNode) {
         TreeNode<Integer> temp = treeNode;
         LinkedStack<TreeNode> stack = new LinkedStack<>();
