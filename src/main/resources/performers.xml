@@ -9,16 +9,16 @@
         http://www.springframework.org/schema/context/spring-context-3.1.xsd">
     <context:annotation-config/>
 
-    <bean id="liutingfang" class="exercise.springaction.Juggler"></bean>
-    <bean id="beanBags100" class="exercise.springaction.PoeticJuggler" p:beanBags="10110"/>
-    <bean id="fuckyou" class="exercise.springaction.Poem" p:a="123"/>
-    <bean id="shit" class="exercise.springaction.Poem">
+    <bean id="liutingfang" class="practice.springaction.Juggler"></bean>
+    <bean id="beanBags100" class="practice.springaction.PoeticJuggler" p:beanBags="10110"/>
+    <bean id="fuckyou" class="practice.springaction.Poem" p:a="123"/>
+    <bean id="shit" class="practice.springaction.Poem">
         <qualifier value="haha"/>
         <property name="a">
             <value>999</value>
         </property>
     </bean>
-    <bean id="stage" class="exercise.springaction.Stage" factory-method="getInstance"/>
-    <bean id="beant" class="exercise.springaction.BeanT" scope="prototype"
+    <bean id="stage" class="practice.springaction.Stage" factory-method="getInstance"/>
+    <bean id="beant" class="practice.springaction.BeanT" scope="prototype"
           init-method="initMethod" destroy-method="destroyMethod"/>
 </beans>

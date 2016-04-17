@@ -7,11 +7,11 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-    <bean id="knight" class="exercise.spring.di.BraveKnight">
+    <bean id="knight" class="practice.spring.di.BraveKnight">
         <constructor-arg ref="quest"/>
     </bean>
-    <bean id="quest" class="exercise.spring.di.SlayDragonQuest"/>
-    <bean id="minstrel" class="exercise.spring.aop.Minstrel"/>
+    <bean id="quest" class="practice.spring.di.SlayDragonQuest"/>
+    <bean id="minstrel" class="practice.spring.aop.Minstrel"/>
 
 
 
