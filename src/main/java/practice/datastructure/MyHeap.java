@@ -125,7 +125,6 @@ public class MyHeap<V extends Comparable> {
         while (!heap.isEmpty()) {
             System.out.print(" " + heap.delete());
         }
-
         int size = 88;
         List<Integer> list = new ArrayList<>(size);
         ThreadLocalRandom random = ThreadLocalRandom.current();
