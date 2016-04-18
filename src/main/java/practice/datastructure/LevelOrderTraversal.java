@@ -1,5 +1,7 @@
 package practice.datastructure;
 
+import java.util.LinkedList;
+
 import static java.lang.System.out;
 
 /**
@@ -9,23 +11,27 @@ public class LevelOrderTraversal {
 
     public static void levelOrderTraversal(TreeNode<Integer> treeNode) {
         // TODO: 2016/4/16 not done yet
+        LinkedList<TreeNode> stack = new LinkedList<>();
         if (treeNode != null) {
-            out.println(treeNode.getV());
-            TreeNode<Integer> left = treeNode.getLeft();
-            TreeNode<Integer> right = treeNode.getRight();
-            if (left != null) {
-                out.println(left.getV());
-            }
-            if (right != null) {
-                out.println(right.getV());
-            }
-            levelOrderTraversal(left);
-            levelOrderTraversal(right);
+            stack.offer(treeNode);
         }
+        while (!stack.isEmpty()) {
+            treeNode = stack.poll();
+            TreeNode<Integer> left = treeNode.getLeft();
+            if (left != null) {
+                stack.offer(left);
+            }
+            TreeNode<Integer> right = treeNode.getRight();
+            if (right != null) {
+                stack.offer(right);
+            }
+            out.print(treeNode.getV() + " ");
+        }
+
     }
 
     public static void main(String[] args) {
-        TreeNode<Integer> treeNode = TreeNode.<Integer>newInstance(4, 1);
+        TreeNode<Integer> treeNode = TreeNode.<Integer>newInstance(5, 1);
         levelOrderTraversal(treeNode);
     }
 }

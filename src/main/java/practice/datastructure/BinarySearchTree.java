@@ -75,7 +75,6 @@ public class BinarySearchTree<V extends Comparable> {
         while (temp.left != null) {
             temp = temp.left;
         }
-
         return temp;
     }
 
@@ -95,6 +94,6 @@ public class BinarySearchTree<V extends Comparable> {
         }
         InOrderTraversal.inOrderTraversal(binarySearchTree);
         BinarySearchTree temp = binarySearchTree.findMin();
-        System.out.println();
+        System.out.println("\n" + temp.v);
     }
 }

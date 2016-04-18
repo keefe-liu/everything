@@ -1,6 +1,10 @@
 package practice.datastructure;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by tingfang.liu on 2016/4/17.
@@ -17,11 +21,35 @@ public class MyHeap<V extends Comparable> {
         this.isMax = isMax;
     }
 
-    public MyHeap(Collection<V> vs) {
-        // TODO: 2016/4/17 create heap 与 delete 类似
+    public MyHeap(Collection<V> vs, boolean isMax) {
+        // create heap 与 delete 类似
+        this.elements = vs.toArray();
+        this.size = elements.length;
+        this.isMax = isMax;
+        for (int i = (size - 1) / 2; i >= 0; i--) {
+            heapify(i);
+        }
     }
 
-    /*通过isMax来控制是最大堆还是最小堆*/
+    private void heapify(int n) {
+        int child = left(n);
+        V root = (V) elements[n];
+        while (child < size) {
+            if (child + 1 < size && compare((V) elements[child], (V) elements[child + 1]) < 0) {
+                child++;
+            }
+            if (compare(root, (V) elements[child]) < 0) {
+                elements[n] = elements[child];
+                n = child;
+                child = left(child);
+            } else {
+                break;
+            }
+        }
+        elements[n] = root;
+    }
+
+    /*通过isMax来控制是最大堆还是最小堆，compare(v1 ,v2) < 0 不代表 v1 > v2 ,只代表 v1 在 v2 上面*/
     private int compare(V v1, V v2) {
         return isMax ? v1.compareTo(v2) : v2.compareTo(v1);
     }
@@ -89,7 +117,6 @@ public class MyHeap<V extends Comparable> {
         return (index - 1) >> 1;
     }
 
-
     public static void main(String[] args) {
         MyHeap<Integer> heap = new MyHeap<>(25, false);
         for (int i = 0; i < 21; i++) {
@@ -97,6 +124,20 @@ public class MyHeap<V extends Comparable> {
         }
         while (!heap.isEmpty()) {
             System.out.print(" " + heap.delete());
+        }
+
+        int size = 88;
+        List<Integer> list = new ArrayList<>(size);
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        for (int i = 0; i < size; i++) {
+            list.add(random.nextInt(100));
+        }
+        System.out.println("\nbefore heapify\n" + Arrays.toString(list.toArray()));
+        MyHeap heap1 = new MyHeap(list, false);
+        System.out.println("\nafter heapify\n" + Arrays.toString(heap1.elements));
+        System.out.println("after heapify ");
+        while (!heap1.isEmpty()) {
+            System.out.print(" " + heap1.delete());
         }
     }
 }
