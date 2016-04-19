@@ -19,32 +19,34 @@ public class QuickSort {
         out.println(Arrays.toString(array));
     }
 
-    private static void quickSort(int[] array, int s, int e) {
-        int temp = array[s];
-        int l = s;
-        int h = e;
-        while (l < h) {
-            while (l < h && array[h] >= temp) {
-                h--;
+    private static void quickSort(int[] array, int low, int high) {
+        if (low < high) {
+            int key = array[high];
+            int i = low;
+            int j = high;
+            while (i < j) {
+                while (i < j && array[i] <= key) {
+                    i++;
+                }
+                if (i < j) {
+                    array[j] = array[i];
+                    j--;
+                }
+                while (i < j && array[j] >= key) {
+                    j--;
+                }
+                if (i < j) {
+                    array[i] = array[j];
+                    i++;
+                }
             }
-            if (l < h) {
-                array[l] = array[h];
-                l++;
+            array[i] = key;
+            if (low < i - 1) {
+                quickSort(array, low, i - 1);
             }
-            while (l < h && array[l] <= temp) {
-                l++;
+            if (i + 1 < high) {
+                quickSort(array, i + 1, high);
             }
-            if (l < h) {
-                array[h] = array[l];
-                h--;
-            }
-        }
-        array[l] = temp;
-        if (s < l - 1) {
-            quickSort(array, s, l - 1);
-        }
-        if (l < e - 1) {
-            quickSort(array, l + 1, e);
         }
     }
 }

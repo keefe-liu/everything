@@ -1,6 +1,6 @@
 package practice.algorithm;
 
-import practice.PerformanceUtils;
+import practice.utils.PerformanceUtils;
 
 /**
  * Created by tingfang.liu on 2016/4/16.

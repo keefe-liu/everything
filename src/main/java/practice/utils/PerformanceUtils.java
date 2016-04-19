@@ -1,4 +1,4 @@
-package practice;
+package practice.utils;
 
 /**
  * Created by tingfang.liu on 2016/4/16.
