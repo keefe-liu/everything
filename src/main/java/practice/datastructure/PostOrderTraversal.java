@@ -36,6 +36,7 @@ public class PostOrderTraversal {
     public static void main(String[] args) {
         TreeNode<Integer> treeNode = TreeNode.<Integer>newInstance(4, 1);
         postOrderTraversal(treeNode);
+        out.println();
         nonRecursionPostOrder(treeNode);
     }
 }
