@@ -10,10 +10,11 @@ import static java.lang.System.out;
 public class DeleteFromTree {
 
     public static <V extends Comparable> BinarySearchTree deleteFromTree(BinarySearchTree binarySearchTree, V v) {
+
         if (binarySearchTree != null) {
-            BinarySearchTree rightMin;
             BinarySearchTree left;
             BinarySearchTree right;
+            BinarySearchTree rightMin;
             int compare = v.compareTo(binarySearchTree.getV());
             if (compare < 0) {
                 binarySearchTree.setLeft(deleteFromTree(binarySearchTree.getLeft(), v));
@@ -27,10 +28,10 @@ public class DeleteFromTree {
                     binarySearchTree.setV(rightMin.getV());
                     binarySearchTree.setRight(deleteFromTree(right, rightMin.getV()));
                 } else {
-                    if (left != null) {
-                        binarySearchTree = left;
-                    } else {
+                    if (left == null) {
                         binarySearchTree = right;
+                    } else {
+                        binarySearchTree = left;
                     }
                 }
             }

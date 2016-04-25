@@ -32,21 +32,20 @@ public class MyHeap<V extends Comparable> {
     }
 
     private void heapify(int n) {
-        int child = left(n);
+        int child = n * 2 + 1;
         V root = (V) elements[n];
         while (child < size) {
-            if (child + 1 < size && compare((V) elements[child], (V) elements[child + 1]) < 0) {
+            if (child + 1 < size && compare((V) elements[child + 1], (V) elements[child]) > 0) {
                 child++;
             }
-            if (compare(root, (V) elements[child]) < 0) {
+            if (compare((V) elements[child], root) > 0) {
                 elements[n] = elements[child];
                 n = child;
-                child = left(child);
+                child = child * 2 + 1;
             } else {
                 break;
             }
         }
-        elements[n] = root;
     }
 
     /*通过isMax来控制是最大堆还是最小堆，compare(v1 ,v2) < 0 不代表 v1 > v2 ,只代表 v1 在 v2 上面*/
@@ -83,18 +82,15 @@ public class MyHeap<V extends Comparable> {
             return null;
         }
         V result = (V) elements[0];
-        int index = 0;
         V temp = (V) elements[--size];
         int parent = 0;
-        /*left 与 right 中较大的下标*/
-        int child;
-        while (left(parent) < size) {
-            child = left(parent);
+        int child = 0;
+        while (parent * 2 + 1 < size) {
+            child = parent * 2 + 1;
             if (child + 1 < size && compare((V) elements[child], (V) elements[child + 1]) < 0) {
-                //找出较大元素的下标
                 child++;
             }
-            if (compare(temp, (V) elements[child]) > 0) {
+            if (compare((V) elements[child], temp) < 0) {
                 break;
             } else {
                 elements[parent] = elements[child];

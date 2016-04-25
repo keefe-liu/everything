@@ -19,7 +19,7 @@ public class PreOrderTraversal {
 
     public static <V extends Comparable> void preOrderTraversal(BinarySearchTree<V> treeNode) {
         if (treeNode != null) {
-            out.print(treeNode.getV() + " ");
+            out.println(treeNode.getV());
             preOrderTraversal(treeNode.getLeft());
             preOrderTraversal(treeNode.getRight());
         }
@@ -38,7 +38,6 @@ public class PreOrderTraversal {
                 temp = stack.pop();
                 temp = temp.getRight();
             }
-
         }
     }
 

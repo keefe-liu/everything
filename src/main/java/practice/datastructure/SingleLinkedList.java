@@ -71,16 +71,26 @@ public class SingleLinkedList<V> implements Iterable<V> {
         }
     }
 
+    private static Node reverse(Node current) {
+        if (current == null || current.next == null) {
+            return current;
+        }
+        Node tempNext = current.next;
+        current.next = null;
+        Node temp = reverse(tempNext);
+        tempNext.next = current;
+        return temp;
+    }
+
+
     public static void main(String[] args) {
         SingleLinkedList<Long> sll = new SingleLinkedList<>();
         for (int i = 0; i < 10; i++) {
             sll.add(i + 1l);
         }
-        for (Iterator<Long> it = sll.iterator(); it.hasNext(); ) {
-            System.out.println(it.next());
-        }
+        sll.first = reverse(sll.first);
         for (Long l : sll) {
-            System.out.print(l);
+            System.out.print(l + " ");
         }
     }
 }

@@ -24,8 +24,8 @@ public class InOrderTraversal {
     }
 
     public static void nonRecursionInOrder(TreeNode<Integer> treeNode) {
-        TreeNode<Integer> temp = treeNode;
-        LinkedStack<TreeNode> stack = new LinkedStack<>();
+        TreeNode temp = treeNode;
+        LinkedStack<TreeNode> stack = new LinkedStack();
         while (temp != null || !stack.isEmpty()) {
             while (temp != null) {
                 stack.push(temp);
@@ -36,7 +36,6 @@ public class InOrderTraversal {
                 out.print(temp.getV() + " ");
                 temp = temp.getRight();
             }
-
         }
     }
 

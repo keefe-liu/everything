@@ -3,6 +3,7 @@ package practice.datastructure;
 import java.util.LinkedList;
 
 import static java.lang.System.out;
+import static java.lang.System.runFinalization;
 
 /**
  * Created by tingfang.liu on 2016/4/16.
@@ -10,24 +11,19 @@ import static java.lang.System.out;
 public class LevelOrderTraversal {
 
     public static void levelOrderTraversal(TreeNode<Integer> treeNode) {
-        // TODO: 2016/4/16 not done yet
-        LinkedList<TreeNode> stack = new LinkedList<>();
-        if (treeNode != null) {
-            stack.offer(treeNode);
-        }
-        while (!stack.isEmpty()) {
-            treeNode = stack.poll();
+        LinkQueue<TreeNode> queue = new LinkQueue();
+        while (treeNode != null) {
+            out.print(treeNode.getV() + "　");
             TreeNode<Integer> left = treeNode.getLeft();
             if (left != null) {
-                stack.offer(left);
+                queue.offer(left);
             }
             TreeNode<Integer> right = treeNode.getRight();
             if (right != null) {
-                stack.offer(right);
+                queue.offer(right);
             }
-            out.print(treeNode.getV() + " ");
+            treeNode = queue.poll();
         }
-
     }
 
     public static void main(String[] args) {

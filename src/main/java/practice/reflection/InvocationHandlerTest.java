@@ -21,6 +21,8 @@ public class InvocationHandlerTest {
         Animal person = (Animal) proxy1.bind(new Person());
         person.eat();
 
+        System.out.println("..." + (proxy.bind(new Person()) instanceof Animal));
+
     }
 }
 
