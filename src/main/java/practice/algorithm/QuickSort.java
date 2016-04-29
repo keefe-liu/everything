@@ -14,10 +14,9 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        Person person = new Person();
-        person.name = "jack";
-        change(person);
-        out.println(person.name);
+        int[] array = {9, 5, 7, 6, 8, 1, 3, 2, 0, 4};
+        quickSort(array, 0, array.length - 1);
+        out.println(Arrays.toString(array));
     }
 
     static class Person {
@@ -36,23 +35,23 @@ public class QuickSort {
 
     private static void quickSort(int[] array, int low, int high) {
         if (low < high) {
-            int key = array[high];
+            int key = array[low];
             int i = low;
             int j = high;
             while (i < j) {
-                while (i < j && array[i] <= key) {
-                    i++;
-                }
-                if (i < j) {
-                    array[j] = array[i];
-                    j--;
-                }
                 while (i < j && array[j] >= key) {
                     j--;
                 }
                 if (i < j) {
                     array[i] = array[j];
                     i++;
+                }
+                while (i < j && array[i] <= key) {
+                    i++;
+                }
+                if (i < j) {
+                    array[j] = array[i];
+                    j--;
                 }
             }
             array[i] = key;

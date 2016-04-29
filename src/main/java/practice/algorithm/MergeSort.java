@@ -9,7 +9,7 @@ import static java.lang.System.out;
  */
 public class MergeSort {
     public static void main(String[] args) {
-        int[] array = new int[]{8, 9, 4, 1, 5, 7, 3, 2, 6, 0, 10};
+        int[] array = new int[]{8, 9, 4, 1, 5, 7, 3, 2, 6, 0, 10, -1};
         mergeSort(array, 0, array.length - 1);
         out.println(Arrays.toString(array));
     }
@@ -21,16 +21,20 @@ public class MergeSort {
         int mid = (start + end) / 2;
         mergeSort(array, start, mid);
         mergeSort(array, mid + 1, end);
-        merge2(array, start, mid, end);
+        merge(array, start, mid, end);
     }
 
-    public static void merge2(int[] array, int low, int mid, int high) {
+    public static void merge(int[] array, int low, int mid, int high) {
         int[] temp = new int[high - low + 1];
         int index = 0;
         int i = low;
         int j = mid + 1;
         while (i <= mid && j <= high) {
-            temp[index++] = (array[i] < array[j]) ? array[i++] : array[j++];
+            if (array[i] <= array[j]) {
+                temp[index++] = array[i++];
+            } else {
+                temp[index++] = array[j++];
+            }
         }
         while (i <= mid) {
             temp[index++] = array[i++];
@@ -38,7 +42,9 @@ public class MergeSort {
         while (j <= high) {
             temp[index++] = array[j++];
         }
-        System.arraycopy(temp, 0, array, low, high - low + 1);
+        while (index > 0) {
+            array[high--] = temp[--index];
+        }
     }
 
     public static void merge1(int[] array, int low, int mid, int high) {
@@ -65,33 +71,6 @@ public class MergeSort {
         while (j < high - mid) {
             array[low + k] = temp[j++];
             k++;
-        }
-    }
-
-    public static void merge(int[] array, int low, int mid, int high) {
-        if (low == high) {
-            return;
-        }
-        int[] head = new int[mid - low + 1];
-        int[] tail = new int[high - mid];
-        System.arraycopy(array, low, head, 0, mid - low + 1);
-        System.arraycopy(array, mid + 1, tail, 0, high - mid);
-        int i = 0;
-        int j = 0;
-        while (i < mid - low + 1 && j < high - mid) {
-            if (head[i] < tail[j]) {
-                array[i + j + low] = head[i];
-                i++;
-            } else {
-                array[i + j + low] = tail[j];
-                j++;
-            }
-        }
-        while (i < mid - low + 1) {
-            array[i + j + low] = head[i++];
-        }
-        while (j < high - mid) {
-            array[i + j + low] = tail[j++];
         }
     }
 }
