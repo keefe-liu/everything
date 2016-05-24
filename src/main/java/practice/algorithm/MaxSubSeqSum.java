@@ -9,26 +9,30 @@ public class MaxSubSeqSum {
 
     public static void main(String[] args) {
 
-        int[] array = new int[]{5, -23, -412, 46, 9, 65, 34, -540, -35, 1};
+        int[] array = new int[]{5, 23, 412, 46, 9, 65, 34, -11540, -35, 1};
 
-        PerformanceUtils.test(() -> MaxSubSeqSum.maxLow(array));
-        PerformanceUtils.test(() -> MaxSubSeqSum.maxCrazy(array));
+        MaxSubSeqSum.maxLow(array);
+        MaxSubSeqSum.maxCrazy(array);
     }
 
     static int maxLow(int[] array) {
 
         int tempSum;
         int maxSum = 0;
+        int s = 0;
+        int e = 0;
         for (int i = 0; i < array.length; i++) {
             tempSum = 0;
             for (int j = i; j < array.length; j++) {
                 tempSum += array[j];
                 if (tempSum > maxSum) {
+                    s = i;
+                    e = j;
                     maxSum = tempSum;
                 }
             }
         }
-
+        System.out.println(s + "  " + e);
         System.out.println("max sum : " + maxSum);
         return maxSum;
     }
