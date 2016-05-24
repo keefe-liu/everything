@@ -9,7 +9,7 @@ public class MaxSubSeqSum {
 
     public static void main(String[] args) {
 
-        int[] array = new int[]{5, -23, 412, 46, 9, -65, 34, 54, 35, 0};
+        int[] array = new int[]{5, -23, -412, 46, 9, 65, 34, -540, -35, 1};
 
         PerformanceUtils.test(() -> MaxSubSeqSum.maxLow(array));
         PerformanceUtils.test(() -> MaxSubSeqSum.maxCrazy(array));
@@ -42,11 +42,13 @@ public class MaxSubSeqSum {
 
         int tempSum = 0;
         int maxSum = 0;
+        int r = 0;
         int s = 0;
         int e = 0;
         for (int i = 0; i < array.length; i++) {
             tempSum += array[i];
             if (maxSum < tempSum) {
+                r = s;
                 e = i;
                 maxSum = tempSum;
             } else if (tempSum < 0) {
@@ -54,7 +56,7 @@ public class MaxSubSeqSum {
                 tempSum = 0;
             }
         }
-        System.out.println(s + "  " + e);
+        System.out.println(r + "  " + e);
         System.out.println("max sum : " + maxSum);
         return maxSum;
     }
