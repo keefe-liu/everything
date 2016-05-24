@@ -16,15 +16,14 @@ public class ReverseNode {
 
     static Node reverse(Node node) {
 
-        Node tNext = node.next;
-        if (tNext == null) {
+        if (node == null || node.next == null) {
             return node;
         }
-        Node rNext = reverse(tNext);
-        tNext.next = node;
+        Node nNext = node.next;
+        Node result = reverse(nNext);
+        nNext.next = node;
         node.next = null;
-
-        return rNext;
+        return result;
     }
 
     static Node reverse2(Node node) {
@@ -67,11 +66,11 @@ public class ReverseNode {
     public static void main(String[] args) {
         Node n1 = newNode(10);
         visitNode(n1);
-        n1 = reverse2(n1);
+        n1 = reverse(n1);
         visitNode(n1);
-        n1 = reverse2(n1);
+        n1 = reverse(n1);
         visitNode(n1);
-        n1 = reverse2(n1);
+        n1 = reverse(n1);
         visitNode(n1);
     }
 }

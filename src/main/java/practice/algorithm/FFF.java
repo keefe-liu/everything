@@ -14,9 +14,17 @@ public class FFF {
         return (n < 0) ? 1 : n + 1;
     }
 
+    static final int test(int cap) {
+        int result = 1;
+        while (result < cap) {
+            result <<= 1;
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
-        for (int i = 0; i <40; i++) {
-            System.out.println(i + "        " + tableSizeFor(i));
+        for (int i = 0; i < 40; i++) {
+            System.out.println(i + "        " + tableSizeFor(i) + "       " + test(i));
         }
     }
 }
