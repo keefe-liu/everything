@@ -1,4 +1,4 @@
-package practice.algorithm;
+package practice.algorithm.sort;
 
 import java.util.Arrays;
 
@@ -9,28 +9,10 @@ import static java.lang.System.out;
  */
 public class QuickSort {
 
-    public void sort(int[] array, int s, int e) {
-
-    }
-
     public static void main(String[] args) {
         int[] array = {9, 5, 7, 6, 8, 1, 3, 2, 0, 4};
         quickSort(array, 0, array.length - 1);
         out.println(Arrays.toString(array));
-    }
-
-    static class Person {
-        private String name = "";
-    }
-
-    public static void change(Person i) {
-        i.name = "rose";
-        System.out.println(i.name);
-    }
-
-    public static void change(int i) {
-        i += 10;
-        System.out.println(i);
     }
 
     private static void quickSort(int[] array, int low, int high) {
@@ -64,7 +46,6 @@ public class QuickSort {
         }
     }
 
-
     private static void quickSort1(int[] array, int low, int high) {
         if (low < high) {
             int key = array[high];
@@ -94,5 +75,9 @@ public class QuickSort {
                 quickSort(array, i + 1, high);
             }
         }
+    }
+
+    public void sort(int[] array, int s, int e) {
+
     }
 }
